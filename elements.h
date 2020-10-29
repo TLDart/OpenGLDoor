@@ -15,7 +15,7 @@
 #define PI		 3.14159
 
 extern int doorSizex, doorSizey;
-extern float offset;
+extern float offset, angle, rotangle;
 extern GLfloat obsT[], obsP[];
 extern int tipoProjeccao, ssize,steps;
 extern char texto[30];

@@ -37,4 +37,4 @@ int observer = 1;
 1.0, 0.0, 0.0 };
 
 int doorSizex = 2, doorSizey =5;
-float offset = 0;
+float offset = 0, angle = 90, rotangle = 0;

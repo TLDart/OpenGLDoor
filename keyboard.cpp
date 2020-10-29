@@ -1,21 +1,24 @@
 #include "keyboard.h"
-float step = 0.1;
+float step = 0.1, anglestep = 1;
 void keyboard(unsigned char key, int x, int y) {
 	switch(key){
 
 		case 'd':
 		if(ceil(offset *100) /100+ step > 4.02|| ceil(offset *100) /100 +step < 0) {
-				std::cout<< "here" << std::endl;
 				step = -step;
 			}
 			offset =offset + step;
 			
-			std::cout << offset << step << std::endl;
+			//std::cout << offset << step << std::endl;
 			glutPostRedisplay();
 			break;
-	case 27:
-		exit(0);
-		break;
+		case 'w':
+		if(rotangle == 70 || rotangle == -1) anglestep = -anglestep;
+			rotangle = rotangle + anglestep;
+			break;
+		case 27:
+			exit(0);
+			break;
 	}
 
 }
