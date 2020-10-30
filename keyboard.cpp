@@ -25,7 +25,7 @@ void keyboard(unsigned char key, int x, int y) {
 
 void teclasNotAscii(int key, int x, int y) {
 	if(observer){
-		obsT[0] = 0; obsT[1] = 0; obsT[2] = 0;
+		obsT[0] = 0; obsT[1] = 5; obsT[2] = 0;
 		
 		if (key == GLUT_KEY_UP)    obsP[1] = obsP[1] + 0.5;
 		if (key == GLUT_KEY_DOWN)  obsP[1] = obsP[1] - 0.5;

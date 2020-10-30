@@ -14,12 +14,15 @@
 #define GRAY     0.3, 0.3, 0.3, 1.0
 #define PI		 3.14159
 
-extern int doorSizex, doorSizey;
-extern float offset, angle, rotangle;
-extern GLfloat obsT[], obsP[];
 extern int tipoProjeccao, ssize,steps;
-extern char texto[30];
-extern GLfloat cores[], cores2[];
-extern GLuint poligono[];
+extern GLfloat obsT[], obsP[];
+
+extern GLfloat squarevertex[], trianglevertex[], trianglevertex2[], squarenormal[], trianglenormal[];
+extern float offset, angle, rotangle, paddingx;
+extern float doorSizes[][3], doorLocation[][3];
+extern GLfloat color[], color2[];
+extern GLuint squareorientation[], triangleorientation[];
 void drawEixos();
 void DrawDoor();
+void DoorLeft();
+void DoorRight();

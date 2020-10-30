@@ -8,11 +8,11 @@ void config(void)
 	glEnable(GL_CULL_FACE);		// Enable Cullfacing
 	glCullFace(GL_BACK);		// Select the side of cullfacing
 
-	glVertexPointer(3, GL_FLOAT, 0, vertices); //���������������Vertex arrays
+	glVertexPointer(3, GL_FLOAT, 0, squarevertex); // Sets up the vertex arrays
 	glEnableClientState(GL_VERTEX_ARRAY);
-	glNormalPointer(GL_FLOAT, 0, normais);
+	glNormalPointer(GL_FLOAT, 0,  squarenormal);
 	glEnableClientState(GL_NORMAL_ARRAY);
-	glColorPointer(3, GL_FLOAT, 0, cores);
+	glColorPointer(3, GL_FLOAT, 0, color);
 	glEnableClientState(GL_COLOR_ARRAY);
 
 	srand(1);

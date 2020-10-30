@@ -20,39 +20,54 @@ void drawEixos(){
 
 void DrawDoor(){
 	
-	//Porta 1
-	glPushMatrix();
-		glColorPointer(3,GL_FLOAT,0,cores);
-		glTranslatef(doorSizex/2 - offset,doorSizey/2 + 0.5, 0);
-		glScalef(doorSizex,doorSizey,1);
-		glRotatef(90,1,0,0);
-		glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_INT, poligono);
-	glPopMatrix();
-	//Door Lever
-	glPushMatrix();
-		glColorPointer(3,GL_FLOAT,0,cores);
-		glTranslatef(doorSizex/2 + doorSizex + offset,doorSizey/2 + 0.5, 0.1);
-		//glScalef(doorSizex,doorSizey,1);
-		glTranslatef(0,0.5,0);
-		glRotatef(angle - rotangle,1,0,0);
-		glTranslatef(0,0,0.5);
-		glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_INT, poligono);
-	glPopMatrix();
-	// Door back level
-	glPushMatrix();
-		glColorPointer(3,GL_FLOAT,0,cores);
-		glTranslatef(doorSizex/2 + doorSizex + offset,doorSizey/2 + 0.5, 0.1);
-		glRotatef(90,1,0,0);
-		glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_INT, poligono);
-	glPopMatrix();
-	//Porta 2
-	glPushMatrix();
-	glColorPointer(3,GL_FLOAT,0,cores2);
-	glTranslatef(doorSizex/2 + doorSizex + offset,doorSizey/2 + 0.5, 0);
-	glScalef(doorSizex,doorSizey,1);
-	glRotatef(90,1,0,0);
-	glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_INT, poligono);
-	glPopMatrix();
+	//DoorLeft();
+	//DoorRight();
+	
+	
 
 
 }
+ void DoorLeft(){
+//Porta 1
+	 for(int i = 0; i < 14; i++){
+		glPushMatrix();
+			float randomR = (double)rand() / (RAND_MAX);
+			float randomG = (double)rand() / (RAND_MAX);
+			float randomB = (double)rand() / (RAND_MAX);
+			glColor3f(randomR,randomG,randomB);
+			glTranslatef(doorLocation[i][0], doorLocation[i][1], doorLocation[i][2]);
+			glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]);
+			glRotatef(90,1,0,0);
+			//glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_INT,squareorientation );
+			glutSolidCube(1);
+		glPopMatrix();
+	}
+	glVertexPointer(3, GL_FLOAT, 0, trianglevertex); // Sets up the vertex arrays
+	glEnableClientState(GL_VERTEX_ARRAY);
+
+	glPushMatrix();
+	glTranslatef(3+1, 4/2, 0);
+	glRotatef(180,0,0,1);
+	glScalef(2,4,1);
+	glRotatef(90,1,0,0);
+	glDrawElements(GL_POLYGON, 3, GL_UNSIGNED_INT,squareorientation);
+	glPopMatrix();
+	
+	glVertexPointer(3, GL_FLOAT, 0, trianglevertex2); // Sets up the vertex arrays
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glPushMatrix();
+	glTranslatef(3 + 1, 3 * 1.0 /2 + 7, 0);
+	glScalef(2,3,1);
+	glRotatef(90,1,0,0);
+	glDrawElements(GL_POLYGON, 3, GL_UNSIGNED_INT,triangleorientation);
+	glPopMatrix();
+
+
+
+	glVertexPointer(3, GL_FLOAT, 0, squarevertex); // Sets up the vertex arrays
+	glEnableClientState(GL_VERTEX_ARRAY);
+ }
+
+ void DoorRight(){
+;
+ }
