@@ -26,4 +26,5 @@ void drawEixos();
 void DrawDoor();
 void DoorLeft();
 void DoorRight();
+void DrawHandler();
 void DrawTetraedron();

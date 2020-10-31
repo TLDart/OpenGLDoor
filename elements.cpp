@@ -20,59 +20,99 @@ void drawEixos(){
 
 void DrawDoor(){
 	
+	DrawHandler();
 	DoorLeft();
-
-	//DoorRight();
+	DoorRight();
 }
  void DoorLeft(){
-//Porta 1
+	glColorPointer(3, GL_FLOAT, 0, color);
+	glEnableClientState(GL_COLOR_ARRAY);
+
 	 for(int i = 0; i < 14; i++){
 		 if(doorSizes[i][3] == 1){
-		glPushMatrix();
-			glColor4f(GREEN);
-			glTranslatef(doorLocation[i][0], doorLocation[i][1], doorLocation[i][2]);
-			glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]);
-			glRotatef(90,1,0,0);
-			glutSolidCube(1);
-		glPopMatrix();
+			glPushMatrix();
+				if(i == 6 || i == 8) glColor4f(GRAY);
+				else glColor4f(GREEN);
+				glTranslatef(doorLocation[i][0] - offset, doorLocation[i][1], doorLocation[i][2]);
+				glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]);
+				glRotatef(90,1,0,0);
+				glutSolidCube(1);
+			glPopMatrix();
 		 }
 		else{
 			glPushMatrix();
-			glTranslatef(doorLocation[i][0], doorLocation[i][1], doorLocation[i][2]);
-			if(doorSizes[i][3] == 2)
-				glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]); 
-			else if(doorSizes[i][3] == 3){
-				glRotatef(180,0,0,1);
-				glScalef(-doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]); 
-			}
-			else if(doorSizes[i][3] == 4){
-				glRotatef(180,0,0,1);
-				glScalef(doorSizes[i][0],-doorSizes[i][1],doorSizes[i][2]); 
-			}
-			else if(doorSizes[i][3] == 5){
-				glScalef(-doorSizes[i][0],-doorSizes[i][1],doorSizes[i][2]); 
-			}
-			glRotatef(90,1,0,0);
-			DrawTetraedron();
+				glTranslatef(doorLocation[i][0] -offset, doorLocation[i][1], doorLocation[i][2]);
+				if(doorSizes[i][3] == 2)
+					glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]); 
+				else if(doorSizes[i][3] == 3){
+					glRotatef(180,0,0,1);
+					glScalef(-doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]); 
+				}
+				else if(doorSizes[i][3] == 4){
+					glRotatef(180,0,0,1);
+					glScalef(doorSizes[i][0],-doorSizes[i][1],doorSizes[i][2]); 
+				}
+				else if(doorSizes[i][3] == 5){
+					glScalef(-doorSizes[i][0],-doorSizes[i][1],doorSizes[i][2]); 
+				}
+				glRotatef(90,1,0,0);
+				DrawTetraedron();
 			glPopMatrix();
 		}
 	}
-	
-	/* glPushMatrix();
-	glTranslatef(3 + 1, 3 * 1.0 /2 + 7, 0);
-	glScalef(2,3,1);
-	glRotatef(90,1,0,0);
-	DrawTetraedron();
-	glPopMatrix();
- */
-
-
-	glVertexPointer(3, GL_FLOAT, 0, squarevertex); // Sets up the vertex arrays
-	glEnableClientState(GL_VERTEX_ARRAY);
  }
 
  void DoorRight(){
-;
+	glColorPointer(3, GL_FLOAT, 0, color2);
+	glEnableClientState(GL_COLOR_ARRAY);
+
+	for(int i = 14; i < 26; i++){
+			if(doorSizes[i][3] == 1){
+			glPushMatrix();
+				if(i == 22) glColor4f(YELLOW);
+				else glColor4f(BLUE); 
+				//glColor3ub( rand()%255, rand()%255, rand()%255 );
+				glTranslatef(doorLocation[i][0] +offset, doorLocation[i][1], doorLocation[i][2]);
+				glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]);
+				glRotatef(90,1,0,0);
+				glutSolidCube(1);
+			glPopMatrix();
+			}
+		else{
+			glPushMatrix();
+				glTranslatef(doorLocation[i][0] + offset, doorLocation[i][1], doorLocation[i][2]);
+				if(doorSizes[i][3] == 2)
+					glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]); 
+				else if(doorSizes[i][3] == 3){
+					glRotatef(180,0,0,1);
+					glScalef(-doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]); 
+				}
+				else if(doorSizes[i][3] == 4){
+					glRotatef(180,0,0,1);
+					glScalef(doorSizes[i][0],-doorSizes[i][1],doorSizes[i][2]); 
+				}
+				else if(doorSizes[i][3] == 5){
+					glScalef(-doorSizes[i][0],-doorSizes[i][1],doorSizes[i][2]); 
+				}
+				glRotatef(90,1,0,0);
+				DrawTetraedron();
+			glPopMatrix();
+		}
+	}
+ }
+ 
+ void DrawHandler(){
+			glPushMatrix();
+				glColor4f(RED);
+				glTranslatef(doorLocation[26][0] +offset, doorLocation[26][1], doorLocation[26][2]);
+				glTranslatef(0,doorSizes[26][1]/2,0);
+				glRotatef(-rotangle, 1,0,0);
+				glTranslatef(0,-doorSizes[26][1]/2,0);
+				glScalef(doorSizes[26][0],doorSizes[26][1],doorSizes[26][2]);
+				glRotatef(90,1,0,0);
+				glutSolidCube(1);
+			glPopMatrix();
+
  }
 
  void DrawTetraedron(){
