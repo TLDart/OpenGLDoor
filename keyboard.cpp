@@ -10,7 +10,6 @@ void keyboard(unsigned char key, int x, int y) {
 			offset =offset + step;
 			
 			//std::cout << offset << step << std::endl;
-			glutPostRedisplay();
 			break;
 		case 'w':
 		if(rotangle == 70 || rotangle == -1) anglestep = -anglestep;
@@ -23,32 +22,17 @@ void keyboard(unsigned char key, int x, int y) {
 
 }
 
-void teclasNotAscii(int key, int x, int y) {
-	if(observer){
-		obsT[0] = 10; obsT[1] = 5; obsT[2] = 0;
+void arrowKeys(int key, int x, int y) {
 		
 		if (key == GLUT_KEY_UP)    obsP[1] = obsP[1] + 0.5;
 		if (key == GLUT_KEY_DOWN)  obsP[1] = obsP[1] - 0.5;
-		if (key == GLUT_KEY_LEFT)  aVisao = aVisao + 0.1;
-		if (key == GLUT_KEY_RIGHT) aVisao = aVisao - 0.1;
+		if (key == GLUT_KEY_LEFT)  aProjection += 0.1;
+		if (key == GLUT_KEY_RIGHT) aProjection -= 0.1;
 
-		if (obsP[1] > yC)   obsP[1] = yC;
-		if (obsP[1] < -yC)  obsP[1] = -yC;
-		obsP[0] = rVisao * cos(aVisao);
-		obsP[2] = rVisao * sin(aVisao);
-	}
-	else{
-		if (key == GLUT_KEY_UP)    obsT[1] = obsT[1] + 0.5;
-		if (key == GLUT_KEY_DOWN)  obsT[1] = obsT[1] - 0.5;
-		if (key == GLUT_KEY_LEFT)  obsT[0] = obsT[0] + 0.5;
-		if (key == GLUT_KEY_RIGHT) obsT[0] = obsT[0] - 0.5;
-
-		if (obsP[1] > yC)   obsP[1] = yC;
-		if (obsP[1] < -yC)  obsP[1] = -yC;
-		obsP[0] = rVisao * cos(aVisao);
-		obsP[2] = rVisao * sin(aVisao);
-
-	}
+		if (obsP[1] > worldMax)   obsP[1] = worldMax;
+		if (obsP[1] < -worldMax)  obsP[1] = -worldMax;
+		obsP[0] = rProjection * cos(aProjection);
+		obsP[2] = rProjection * sin(aProjection);
 		   
 	    glutPostRedisplay();
 

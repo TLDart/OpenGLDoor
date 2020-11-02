@@ -3,16 +3,16 @@
 #define HEIGHT 960
 
 
-GLint     msec = 10;
-GLfloat		yC = 100.0;	//.. Mundo
+GLint     msec =     10;
+GLfloat		worldMax = 30.0;	
 
-GLfloat  rVisao = 15, aVisao = PI, incVisao = 0.05;
-GLfloat  obsP[] = { rVisao * cos(aVisao), 5, rVisao * sin(aVisao) };
-GLfloat  obsT[] = { obsP[0] - rVisao * cos(aVisao), obsP[1], obsP[2] - rVisao * sin(aVisao) };
+// Observer Options
+GLfloat  rProjection = 15, aProjection = PI, incProjection = 0.05;
+GLfloat  obsP[] = { rProjection * cos(aProjection), 5, rProjection * sin(aProjection) };
+GLfloat  obsT[] = { obsP[0] - rProjection * cos(aProjection), obsP[1], obsP[2] - rProjection * sin(aProjection) };
 
-
+//Objects and vertex arrays
 float anguloZ = 95;
-int observer = 1;
  GLuint    squareorientation[] = { 0, 1, 2, 3 };
  GLfloat squarevertex[] = {
  0.5,  0.0, -0.5,
@@ -96,7 +96,7 @@ float doorSizes[][4] ={
     {1,3,1,1}, // 19
     {2,1,1,1}, // 20
     {2,3,0.5,1}, // 21
-    {2,3,0.5,1}, // 22
+    {2,2.99,0.5,1}, // 22
     {2,4,1,5}, // 23
     {2,3,1,1}, // 24
     {2,3,1,4}, // 25
@@ -135,4 +135,5 @@ float doorLocation[][3] = {
     {leftside + doorSizes[26][0]/2 + doorSizes[15][0] + doorSizes[19][0] ,doorSizes[26][1]/2 + doorSizes[18][1] + doorSizes[14][1], (float)(0.5) + doorSizes[26][2]/2}, // 26
 };
 
+//Screen padding
 void config();

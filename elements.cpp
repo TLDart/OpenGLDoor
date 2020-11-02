@@ -19,7 +19,7 @@ void drawEixos(){
 }
 
 void DrawDoor(){
-	
+	glTranslatef(-8.5, 0,0);	
 	DrawHandler();
 	DoorLeft();
 	DoorRight();
@@ -36,7 +36,7 @@ void DrawDoor(){
 				glTranslatef(doorLocation[i][0] - offset, doorLocation[i][1], doorLocation[i][2]);
 				glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]);
 				glRotatef(90,1,0,0);
-				glutSolidCube(1);
+				if(i != 6 && i != 8 ) glutSolidCube(1);
 			glPopMatrix();
 		 }
 		else{
@@ -59,7 +59,7 @@ void DrawDoor(){
 				DrawTetraedron();
 			glPopMatrix();
 		}
-	}
+	 }
  }
 
  void DoorRight(){

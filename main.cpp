@@ -33,7 +33,7 @@ void display(void) {
 	gluLookAt(obsP[0], obsP[1], obsP[2], obsT[0], obsT[1], obsT[2], 0, 1, 0);
 
 	//Draw Objects
-	drawEixos();
+	//drawEixos();
 	DrawDoor();
 
 	glutSwapBuffers(); // Dwap the created buffer with the current one
@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
 
 	config();
 
-	glutSpecialFunc(teclasNotAscii); // Glut Special Functionality
+	glutSpecialFunc(arrowKeys); // Glut Special Functionality
 	glutDisplayFunc(display);
 	glutKeyboardFunc(keyboard); // Glut Keyboard Functionality
 	glutTimerFunc(msec, Timer, 1);
