@@ -17,14 +17,14 @@
 extern int tipoProjeccao, ssize,steps;
 extern GLfloat obsT[], obsP[];
 
-extern GLfloat squarevertex[], trianglevertex[], trianglevertex2[], squarenormal[], trianglenormal[], triangle3d[];
+extern GLfloat squarenormal[];
 extern float offset, angle, rotangle, paddingx;
 extern float doorSizes[][4], doorLocation[][3];
 extern GLfloat color[], color2[];
-extern GLuint squareorientation[], triangleorientation[],triangleback[], trianglefront[], t3d[][4];
 void drawEixos();
 void DrawDoor();
 void DoorLeft();
 void DoorRight();
 void DrawHandler();
-void DrawTetraedron();
+void DrawTetraedron(float sz);
+void DrawSolidCube(float sz);

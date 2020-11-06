@@ -23,6 +23,7 @@ void DrawDoor(){
 	DrawHandler();
 	DoorLeft();
 	DoorRight();
+	//DrawSolidCube(2);
 }
  void DoorLeft(){
 	glColorPointer(3, GL_FLOAT, 0, color);
@@ -36,7 +37,7 @@ void DrawDoor(){
 				glTranslatef(doorLocation[i][0] - offset, doorLocation[i][1], doorLocation[i][2]);
 				glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]);
 				glRotatef(90,1,0,0);
-				if(i != 6 && i != 8 ) glutSolidCube(1);
+				if(i != 6 && i != 8 ) DrawSolidCube(1);
 			glPopMatrix();
 		 }
 		else{
@@ -56,7 +57,7 @@ void DrawDoor(){
 					glScalef(-doorSizes[i][0],-doorSizes[i][1],doorSizes[i][2]); 
 				}
 				glRotatef(90,1,0,0);
-				DrawTetraedron();
+				DrawTetraedron(1);
 			glPopMatrix();
 		}
 	 }
@@ -75,7 +76,7 @@ void DrawDoor(){
 				glTranslatef(doorLocation[i][0] +offset, doorLocation[i][1], doorLocation[i][2]);
 				glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]);
 				glRotatef(90,1,0,0);
-				glutSolidCube(1);
+				DrawSolidCube(1);
 			glPopMatrix();
 			}
 		else{
@@ -95,7 +96,7 @@ void DrawDoor(){
 					glScalef(-doorSizes[i][0],-doorSizes[i][1],doorSizes[i][2]); 
 				}
 				glRotatef(90,1,0,0);
-				DrawTetraedron();
+				DrawTetraedron(1);
 			glPopMatrix();
 		}
 	}
@@ -115,11 +116,52 @@ void DrawDoor(){
 
  }
 
- void DrawTetraedron(){
+ void DrawTetraedron(float sz){
+	GLuint  trianglefront[] = { 0, 1, 2 };
+	GLuint  triangleback[] = { 5 ,4, 3 };
+	GLuint  t3d[][4] ={
+		{ 0 ,2, 5, 3 },
+		{ 3 ,4, 1, 0 }, 
+		{ 2 ,1, 4, 5 },
+	};
+
+	GLfloat triangle3d[]{
+	 sz/2,  sz/2, -sz/2,
+	-sz/2,  sz/2,  sz/2, 
+	 sz/2,  sz/2,  sz/2, 
+	 sz/2, -sz/2, -sz/2,
+	-sz/2, -sz/2,  sz/2, 
+	 sz/2, -sz/2,  sz/2,
+	};
 	glVertexPointer(3, GL_FLOAT, 0, triangle3d); // Sets up the vertex arrays
 	glDrawElements(GL_POLYGON, 3, GL_UNSIGNED_INT,trianglefront);
 	glDrawElements(GL_POLYGON, 3, GL_UNSIGNED_INT,triangleback);
 	for(int i = 0; i < 3; i++){
 		glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_INT, t3d[i]);
+	}
+ }
+
+ void DrawSolidCube(float sz){
+	GLfloat cube[] = {
+	 sz/2, -sz/2, -sz/2,
+	-sz/2, -sz/2, -sz/2,
+	-sz/2, -sz/2,  sz/2, 
+	 sz/2, -sz/2,  sz/2,
+	 sz/2,  sz/2, -sz/2,
+	-sz/2,  sz/2, -sz/2,
+	-sz/2,  sz/2,  sz/2, 
+	 sz/2,  sz/2,  sz/2,  
+	};
+	GLuint    c3d[][4] = {
+    {0, 3, 2, 1 }, 
+    {0, 4, 7, 3 }, 
+    {1, 5, 4, 0 }, 
+    {2, 6, 5, 1 }, 
+    {3, 7, 6, 2 }, 
+    {7, 4, 5, 6 }, 
+    };
+	glVertexPointer(3, GL_FLOAT, 0, cube); // Sets up the vertex arrays
+	for(int i = 0; i < 6; i++){
+		glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_INT, c3d[i]);
 	}
  }

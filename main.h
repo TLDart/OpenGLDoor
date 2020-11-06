@@ -13,19 +13,15 @@ GLfloat  obsT[] = { obsP[0] - rProjection * cos(aProjection), obsP[1], obsP[2] -
 
 //Objects and vertex arrays
 float anguloZ = 95;
- GLuint    squareorientation[] = { 0, 1, 2, 3 };
- GLfloat squarevertex[] = {
- 0.5,  0.0, -0.5,
--0.5,  0.0, -0.5,
--0.5,  0.0,  0.5, 
- 0.5,  0.0,  0.5, 
- };
+ 
  GLfloat squarenormal[] = {
 0.0, 1.0, 0.0, 
 0.0, 1.0, 0.0,
 0.0, 1.0, 0.0,
 0.0, 1.0, 0.0 };
  GLfloat color[] = {
+0.0, 1.0, 0.0,
+0.0, 1.0, 0.0,
 0.0, 1.0, 0.0,
 0.0, 1.0, 0.0,
 0.0, 1.0, 0.0,
@@ -38,39 +34,11 @@ float anguloZ = 95;
 0.0, 0.0, 1.0,
 0.0, 0.0, 1.0,
 0.0, 0.0, 1.0,
+0.0, 0.0, 1.0,
+0.0, 0.0, 1.0,
 0.0, 0.0, 1.0 };
 
-GLuint  triangleorientation[] = { 0, 1, 2 };
-GLuint  trianglefront[] = { 0, 1, 2 };
-GLuint  triangleback[] = { 5 ,4, 3 };
-GLuint  t3d[][4] ={
-    { 0 ,2, 5, 3 },
-    { 3 ,4, 1, 0 }, 
-    { 2 ,1, 4, 5 },
-};
 
-GLfloat trianglevertex[]{
--0.5,  0.0, -0.5,
--0.5,  0.0,  0.5, 
- 0.5,  0.0,  0.5, 
-};
-
-GLfloat trianglenormal[]{
-    0
-};
-GLfloat trianglevertex2[]{
- 0.5,  0.0, -0.5,
--0.5,  0.0,  0.5, 
- 0.5,  0.0,  0.5, 
-};
-GLfloat triangle3d[]{
- 0.5,  0.5, -0.5,
--0.5,  0.5,  0.5, 
- 0.5,  0.5,  0.5, 
- 0.5,  -0.5, -0.5,
--0.5,  -0.5,  0.5, 
- 0.5,  -0.5,  0.5, 
-};
 float offset = 0, angle = 90, rotangle = 0; // offset, used to opening motion, angle and rotangle used in the rotation of the knob in the middle of the door
 float paddingx = 2; // Initial padding on the left of the door
 float doorSizes[][4] ={
