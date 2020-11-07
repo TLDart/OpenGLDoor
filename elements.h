@@ -26,5 +26,5 @@ void DrawDoor();
 void DoorLeft();
 void DoorRight();
 void DrawHandler();
-void DrawTetraedron(float sz);
+void DrawSolidPrism(float sz);
 void DrawSolidCube(float sz);

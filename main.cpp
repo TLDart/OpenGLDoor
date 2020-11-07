@@ -10,7 +10,6 @@ void config(void)
 
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
-	glColorPointer(3, GL_FLOAT, 0, color);
 	glEnableClientState(GL_COLOR_ARRAY);
 
 	srand(1);
@@ -31,7 +30,7 @@ void display(void) {
 	gluLookAt(obsP[0], obsP[1], obsP[2], obsT[0], obsT[1], obsT[2], 0, 1, 0);
 
 	//Draw Objects
-	//drawEixos();
+	drawEixos();
 	DrawDoor();
 
 	glutSwapBuffers(); // Dwap the created buffer with the current one

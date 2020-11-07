@@ -23,11 +23,11 @@ void DrawDoor(){
 	DrawHandler();
 	DoorLeft();
 	DoorRight();
-	//DrawSolidCube(2);
+	/* glColorPointer(3, GL_FLOAT, 0, color);
+	DrawSolidPrism(2); */
 }
  void DoorLeft(){
 	glColorPointer(3, GL_FLOAT, 0, color);
-	glEnableClientState(GL_COLOR_ARRAY);
 
 	 for(int i = 0; i < 14; i++){
 		 if(doorSizes[i][3] == 1){
@@ -57,7 +57,7 @@ void DrawDoor(){
 					glScalef(-doorSizes[i][0],-doorSizes[i][1],doorSizes[i][2]); 
 				}
 				glRotatef(90,1,0,0);
-				DrawTetraedron(1);
+				DrawSolidPrism(1);
 			glPopMatrix();
 		}
 	 }
@@ -65,7 +65,6 @@ void DrawDoor(){
 
  void DoorRight(){
 	glColorPointer(3, GL_FLOAT, 0, color2);
-	glEnableClientState(GL_COLOR_ARRAY);
 
 	for(int i = 14; i < 26; i++){
 			if(doorSizes[i][3] == 1){
@@ -96,7 +95,7 @@ void DrawDoor(){
 					glScalef(-doorSizes[i][0],-doorSizes[i][1],doorSizes[i][2]); 
 				}
 				glRotatef(90,1,0,0);
-				DrawTetraedron(1);
+				DrawSolidPrism(1);
 			glPopMatrix();
 		}
 	}
@@ -116,13 +115,35 @@ void DrawDoor(){
 
  }
 
- void DrawTetraedron(float sz){
+ void DrawSolidPrism(float sz){
 	GLuint  trianglefront[] = { 0, 1, 2 };
 	GLuint  triangleback[] = { 5 ,4, 3 };
 	GLuint  t3d[][4] ={
 		{ 0 ,2, 5, 3 },
 		{ 3 ,4, 1, 0 }, 
 		{ 2 ,1, 4, 5 },
+	};
+	GLfloat normals[][16] ={
+	{0.0, 1.0, 0.0, //Top 
+	 0.0, 1.0, 0.0,
+	 0.0, 1.0, 0.0,
+	 0.0, -1.0, 0.0},
+	{0.0, -1.0, 0.0, //Bottom
+	 0.0, -1.0, 0.0,
+	 0.0, -1.0, 0.0,
+	 0.0, -1.0, 0.0},
+	{1.0, 0.0, 0.0, //Right
+  	 1.0, 0.0, 0.0,
+	 1.0, 0.0, 0.0,
+	 1.0, 0.0, 0.0},
+	{0.0, 0.5, 0.5, //Diag
+	 0.0, 0.5, 0.5,
+	 0.0, 0.5, 0.5,
+	 0.0, 0.5, 0.5},
+	{0.0, 0.0, 1.0, //Front 
+	 0.0, 0.0, 1.0,
+	 0.0, 0.0, 1.0,
+	 0.0, 0.0, 1.0},
 	};
 
 	GLfloat triangle3d[]{
@@ -134,9 +155,12 @@ void DrawDoor(){
 	 sz/2, -sz/2,  sz/2,
 	};
 	glVertexPointer(3, GL_FLOAT, 0, triangle3d); // Sets up the vertex arrays
+	glNormalPointer(GL_FLOAT,0,normals[0]);
 	glDrawElements(GL_POLYGON, 3, GL_UNSIGNED_INT,trianglefront);
+	glNormalPointer(GL_FLOAT,0,normals[1]);
 	glDrawElements(GL_POLYGON, 3, GL_UNSIGNED_INT,triangleback);
 	for(int i = 0; i < 3; i++){
+		glNormalPointer(GL_FLOAT,0,normals[i + 2]);
 		glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_INT, t3d[i]);
 	}
  }
@@ -152,6 +176,34 @@ void DrawDoor(){
 	-sz/2,  sz/2,  sz/2, 
 	 sz/2,  sz/2,  sz/2,  
 	};
+	GLfloat normals[][16] ={
+	{0.0, -1.0, 0.0, //Bottom 
+	 0.0, -1.0, 0.0,
+	 0.0, -1.0, 0.0,
+	 0.0, -1.0, 0.0},
+	{1.0, 0.0, 0.0, //Right
+	 1.0, 0.0, 0.0,
+	 1.0, 0.0, 0.0,
+	 1.0, 0.0, 0.0},
+	{0.0, 0.0, -1.0, //Back
+  	 0.0, 0.0, -1.0,
+	 0.0, 0.0, -1.0,
+	 0.0, 0.0, -1.0},
+	{-1.0, 0.0, 0.0, //Left 
+	 -1.0, 0.0, 0.0,
+	 -1.0, 0.0, 0.0,
+	 -1.0, 0.0, 0.0},
+	{0.0, 0.0, 1.0, //Front 
+	 0.0, 0.0, 1.0,
+	 0.0, 0.0, 1.0,
+	 0.0, 0.0, 1.0},
+	{0.0, 1.0, 0.0, //Top
+	 0.0, 1.0, 0.0,
+	 0.0, 1.0, 0.0,
+	 0.0, 1.0, 0.0},
+	};
+
+
 	GLuint    c3d[][4] = {
     {0, 3, 2, 1 }, 
     {0, 4, 7, 3 }, 
@@ -162,6 +214,7 @@ void DrawDoor(){
     };
 	glVertexPointer(3, GL_FLOAT, 0, cube); // Sets up the vertex arrays
 	for(int i = 0; i < 6; i++){
+		glNormalPointer(GL_FLOAT,0,normals[i]);
 		glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_INT, c3d[i]);
 	}
  }

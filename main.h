@@ -14,11 +14,6 @@ GLfloat  obsT[] = { obsP[0] - rProjection * cos(aProjection), obsP[1], obsP[2] -
 //Objects and vertex arrays
 float anguloZ = 95;
  
- GLfloat squarenormal[] = {
-0.0, 1.0, 0.0, 
-0.0, 1.0, 0.0,
-0.0, 1.0, 0.0,
-0.0, 1.0, 0.0 };
  GLfloat color[] = {
 0.0, 1.0, 0.0,
 0.0, 1.0, 0.0,
