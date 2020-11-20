@@ -1,8 +1,4 @@
-#include <GL/freeglut.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
-#include <iostream>
+#include "textures.h"
 #define BLUE     0.0, 0.0, 1.0, 1.0
 #define RED		 1.0, 0.0, 0.0, 1.0
 #define YELLOW	 1.0, 1.0, 0.0, 1.0
@@ -16,8 +12,9 @@
 
 extern int tipoProjeccao, ssize,steps;
 extern GLfloat obsT[], obsP[];
+extern GLuint textures[3];
 
-extern GLfloat squarenormal[];
+extern GLfloat squarenormal[], texturas[][16];
 extern float offset, angle, rotangle, paddingx;
 extern float doorSizes[][4], doorLocation[][3];
 extern GLfloat color[], color2[];
@@ -26,5 +23,5 @@ void DrawDoor();
 void DoorLeft();
 void DoorRight();
 void DrawHandler();
-void DrawSolidPrism(float sz);
-void DrawSolidCube(float sz);
+void DrawSolidPrism(float sz, GLuint &tex);
+void DrawSolidCube(float sz, GLuint &tex);

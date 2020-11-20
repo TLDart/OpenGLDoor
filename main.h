@@ -11,7 +11,9 @@ GLfloat  rProjection = 15, aProjection = PI, incProjection = 0.05;
 GLfloat  obsP[] = { rProjection * cos(aProjection), 5, rProjection * sin(aProjection) };
 GLfloat  obsT[] = { obsP[0] - rProjection * cos(aProjection), obsP[1], obsP[2] - rProjection * sin(aProjection) };
 
-//Objects and vertex arrays
+//Textures
+GLuint textures[3];
+//Colors
 float anguloZ = 95;
  
  GLfloat color[] = {
@@ -32,6 +34,34 @@ float anguloZ = 95;
 0.0, 0.0, 1.0,
 0.0, 0.0, 1.0,
 0.0, 0.0, 1.0 };
+
+GLfloat texturas[][16] = {
+{1,1,
+0,1,
+0,0,
+1,0,
+0,1,
+1,1,
+0,0,
+0,0},
+{0,0,
+1,0,
+1,0,
+0,0,
+0,1,
+1,1,
+0,0,
+0,0},
+{0,0,
+1,0,
+1,0,
+0,0,
+0,1,
+1,1,
+0,0,
+0,0},
+ };
+
 
 
 float offset = 0, angle = 90, rotangle = 0; // offset, used to opening motion, angle and rotangle used in the rotation of the knob in the middle of the door
@@ -69,8 +99,8 @@ float doorSizes[][4] ={
 float leftside = paddingx + doorSizes[4][0] + doorSizes[1][0] + doorSizes[0][0];
 
 float doorLocation[][3] = {
-    {paddingx + doorSizes[0][0]/2,4 + doorSizes[0][1]/2 ,0}, // 0 
-    {paddingx + doorSizes[1][0]/2 + doorSizes[0][0],doorSizes[1][1]/2 ,0}, // 1 
+    {paddingx + doorSizes[0][0]/2 ,4 + doorSizes[0][1]/2 ,0}, // 0 
+    {paddingx + doorSizes[1][0]/2 + doorSizes[0][0],doorSizes[1][1]/2,0}, // 1 
     {paddingx + doorSizes[2][0]/2 + doorSizes[0][0],doorSizes[2][1]/2 + doorSizes[1][1],0}, // 2
     {paddingx + doorSizes[3][0]/2 + doorSizes[0][0],doorSizes[3][1]/2 + doorSizes[2][1] + doorSizes[1][1],0}, // 3
     {paddingx + doorSizes[4][0]/2 + doorSizes[0][0] + doorSizes[1][0],doorSizes[4][1]/2,0}, // 4

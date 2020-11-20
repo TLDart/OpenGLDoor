@@ -5,13 +5,15 @@ void config(void)
 	glEnable(GL_DEPTH_TEST);	//Enable Depth 
 	glShadeModel(GL_SMOOTH);	// Color Interpolation	
 
-	glEnable(GL_CULL_FACE);		// Enable Cullfacing
-	glCullFace(GL_BACK);		// Select the side of cullfacing
-
+	loadTextures();
+	/* glEnable(GL_CULL_FACE);		// Enable Cullfacing
+	glCullFace(GL_BACK); */		// Select the side of cullfacing
+	glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-
+	//glEnableClientState(GL_COLOR_ARRAY);
+	glTexCoordPointer(2, GL_FLOAT, 0, texturas);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	srand(1);
 }
 
