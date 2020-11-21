@@ -12,6 +12,8 @@
 #define GRAY     0.3, 0.3, 0.3, 1.0
 #define PI		 3.14159
 
+extern GLfloat  chromeAmbTrans[], chromeDifTrans[]; 
+
 extern GLfloat lightPos[4];
 extern int tipoProjeccao, ssize,steps;
 extern GLfloat obsT[], obsP[];
@@ -28,8 +30,8 @@ void DoorRight();
 void DrawHandler();
 void DrawSolidPrism(float sz, GLuint &tex);
 void DrawSolidCube(float sz, GLuint &tex);
-void DrawFloor();
-void DrawWall();
+void DrawScene();
 void DrawLight();
+void DrawTransparent();
 
 #endif

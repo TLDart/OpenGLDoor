@@ -43,6 +43,9 @@ void display(void) {
 	//Draw Objects
 	drawEixos();
 	DrawDoor();
+	DrawScene();
+	DrawLight();
+	DrawTransparent();
 
 	glutSwapBuffers(); // Dwap the created buffer with the current one
 }

@@ -25,9 +25,7 @@ void DrawDoor(){
 	DoorLeft();
 	DoorRight(); 
 	glPopMatrix();
-	DrawFloor();
-	DrawWall();
-	DrawLight();
+	//DrawWall();
 	//glColorPointer(3, GL_FLOAT, 0, color);
 	//DrawSolidCube(1);
 	//DrawSolidPrism(1, textures[0]);
@@ -38,12 +36,13 @@ void DrawDoor(){
 	 for(int i = 0; i < 14; i++){
 		 if(doorSizes[i][3] == 1){
 			glPushMatrix();
-				if(i == 6 || i == 8) glColor4f(GRAY);
-				else glColor4f(GREEN);
 				glTranslatef(doorLocation[i][0] - offset, doorLocation[i][1], doorLocation[i][2]);
 				glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]);
 				glRotatef(90,1,0,0);
 				if(i != 6 && i != 8 ) DrawSolidCube(1,textures[0]);
+				else{
+						;
+				}
 			glPopMatrix();
 		 }
 		else{
@@ -75,7 +74,6 @@ void DrawDoor(){
 	for(int i = 14; i < 26; i++){
 			if(doorSizes[i][3] == 1){
 			glPushMatrix();
-				
 				//glColor3ub( rand()%255, rand()%255, rand()%255 );
 				glTranslatef(doorLocation[i][0] +offset, doorLocation[i][1], doorLocation[i][2]);
 				glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]);
@@ -121,7 +119,7 @@ void DrawDoor(){
 
  }
 
-void DrawFloor(){
+void DrawScene(){
 	float w =24, h = 30;
 	GLfloat square[][3] ={
 		{-0.5,0,-0.5},
@@ -171,27 +169,13 @@ void DrawFloor(){
 		glScaled(7,10,1);
 		glutSolidCube(1);
 	glPopMatrix();
-}
-void DrawWall(){
-	GLfloat square[][3] ={
-		{-0.5,0,-0.5},
-		{0.5,0,-0.5},
-		{0.5,0,0.5},
-		{-0.5,0,0.5},
-	};
+
+	//Back Wall
 	glPushMatrix();
-	glTranslatef(0,12.5,-12.5);
-	glRotatef(90,1,0,0);
-	glScaled(25,1,25);
-	glBegin(GL_QUADS);
-	glColor3f(0,0,1);
-	for(int j = 0; j < 4; j++){
-			glVertex3f(square[j][0] , square[j][1]  , square[j][2] );
-			glNormal3f(0,1,0);
-			//glNormal3f(normals[i][0],normals[i][2],normals[i][2]);
-			//glTexCoord2f(coords[j][0], coords[j][1]);
-	}
-	glEnd();
+		glTranslatef(0,5,-(h/2));
+		glRotatef(90,1,0,0);
+		glScaled(w,1,10);
+		glutSolidCube(1);
 	glPopMatrix();
 
 
@@ -205,6 +189,7 @@ void DrawLight(){
 	glColor3f(1,1,0);
 	glutSolidCube(1);
 	glPopMatrix();
+
 	glEnable(GL_LIGHTING);
 	glDisable(GL_LIGHTING);
 	glPushMatrix();
@@ -213,7 +198,30 @@ void DrawLight(){
 	glutSolidCube(1);
 	glPopMatrix();
 	glEnable(GL_LIGHTING);
+}
 
+void DrawTransparent(){
+	glMaterialfv(GL_FRONT, GL_AMBIENT, chromeAmbTrans);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, chromeDifTrans);
+	glEnable(GL_BLEND);
+	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glTranslatef(-10, 0,0);	
+	glPushMatrix();
+		glTranslatef(doorLocation[6][0] - offset, doorLocation[6][1], doorLocation[6][2]);
+		glScalef(doorSizes[6][0],doorSizes[6][1],doorSizes[6][2]);
+		glRotatef(90,1,0,0);
+		glutSolidCube(1); 
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(doorLocation[8][0] - offset, doorLocation[8][1], doorLocation[8][2]);
+		glScalef(doorSizes[8][0],doorSizes[8][1],doorSizes[8][2]);
+		glRotatef(90,1,0,0);
+		glutSolidCube(1); 
+	glPopMatrix();
+	glBlendFunc (GL_ONE, GL_ZERO);
+	glDisable(GL_BLEND);
 
 
 }

@@ -95,7 +95,7 @@ float doorSizes[][4] ={
     {2,4,1,5}, // 23
     {2,3,1,1}, // 24
     {2,3,1,4}, // 25
-    {2,3,0.4,1}, // 26
+    {2,3,0.1,1}, // 26
 };
 
 float leftside = paddingx + doorSizes[4][0] + doorSizes[1][0] + doorSizes[0][0];
@@ -140,6 +140,8 @@ GLfloat lightDif[4] = { (float)R,(float) G,(float) B, 1.0 };
 GLfloat lightSpec[4] = {(float) R,(float) G,(float) B, 1.0 };
 
 GLfloat  chromeAmb []={ 0.25 ,0.25 ,0.25 };
+GLfloat  chromeAmbTrans []={ 0.25 ,0.25 ,0.25, 0.5 };
+GLfloat  chromeDifTrans []={   0.4 ,0.4 ,0.4, 0.5 };
 GLfloat  chromeDif []={   0.4 ,0.4 ,0.4 };
 GLfloat  chromeSpec []={ 0.774597 ,0.774597 ,0.774597 };
 GLint  chromeCoef = 0.6 *128;
