@@ -1,6 +1,7 @@
 #include "keyboard.h"
-#define WIDTH 1280
-#define HEIGHT 960
+
+
+GLint width = 1280, height = 960;
 
 
 GLint     msec =     10;

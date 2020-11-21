@@ -19,10 +19,13 @@ void drawEixos(){
 }
 
 void DrawDoor(){
+	glPushMatrix();
 	glTranslatef(-8.5, 0,0);	
 	DrawHandler();
 	DoorLeft();
 	DoorRight(); 
+	glPopMatrix();
+	DrawFloor();
 	//glColorPointer(3, GL_FLOAT, 0, color);
 	//DrawSolidCube(1);
 	//DrawSolidPrism(1, textures[0]);
@@ -117,12 +120,26 @@ void DrawDoor(){
  }
 
 void DrawFloor(){
+	GLfloat square[][3] ={
+		{-0.5,0,-0.5},
+		{0.5,0,-0.5},
+		{0.5,0,0.5},
+		{-0.5,0,0.5},
+	};
 	glPushMatrix();
+	glScaled(25,1,25);
+	glBegin(GL_QUADS);
+	glColor3f(1,0,1);
+	for(int j = 0; j < 4; j++){
+			glVertex3f(square[j][0] , square[j][1]  , square[j][2] );
+			glNormal3f(0,1,0);
+			//glNormal3f(normals[i][0],normals[i][2],normals[i][2]);
+			//glTexCoord2f(coords[j][0], coords[j][1]);
+	}
+	glEnd();
 
 
 
-
-	
 	glPopMatrix();
 	
 }

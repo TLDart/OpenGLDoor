@@ -27,5 +27,6 @@ void DoorRight();
 void DrawHandler();
 void DrawSolidPrism(float sz, GLuint &tex);
 void DrawSolidCube(float sz, GLuint &tex);
+void DrawFloor();
 
 #endif
