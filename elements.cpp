@@ -20,12 +20,14 @@ void drawEixos(){
 
 void DrawDoor(){
 	glPushMatrix();
-	glTranslatef(-8.5, 0,0);	
+	glTranslatef(-10, 0,0);	
 	DrawHandler();
 	DoorLeft();
 	DoorRight(); 
 	glPopMatrix();
 	DrawFloor();
+	DrawWall();
+	DrawLight();
 	//glColorPointer(3, GL_FLOAT, 0, color);
 	//DrawSolidCube(1);
 	//DrawSolidPrism(1, textures[0]);
@@ -120,6 +122,57 @@ void DrawDoor(){
  }
 
 void DrawFloor(){
+	float w =24, h = 30;
+	GLfloat square[][3] ={
+		{-0.5,0,-0.5},
+		{0.5,0,-0.5},
+		{0.5,0,0.5},
+		{-0.5,0,0.5},
+	};
+
+	//Base	
+	glPushMatrix();
+		glTranslatef(-0.5,-0.5,0);
+		glScaled(w,1,h);
+		glutSolidCube(1);
+	glPopMatrix();
+
+	//Ceiling
+	glPushMatrix();
+		glTranslatef(0,10,0);
+		glScaled(w,1,h);
+		glutSolidCube(1);
+	glPopMatrix();
+
+	// Wall Left	
+	glPushMatrix();
+		glTranslatef(w/2,5,0);
+		glScaled(1,10,h);
+		glutSolidCube(1);
+	glPopMatrix();
+
+	// Wall Left	
+	glPushMatrix();
+		glTranslatef(-w/2,5,0);
+		glScaled(1,10,h);
+		glutSolidCube(1);
+	glPopMatrix();
+
+	//Behind Door	
+	glPushMatrix();
+		glTranslatef(-9,5,-1);
+		glScaled(7,10,1);
+		glutSolidCube(1);
+	glPopMatrix();
+
+	//Behind Door
+	glPushMatrix();
+		glTranslatef(8,5,-1);
+		glScaled(7,10,1);
+		glutSolidCube(1);
+	glPopMatrix();
+}
+void DrawWall(){
 	GLfloat square[][3] ={
 		{-0.5,0,-0.5},
 		{0.5,0,-0.5},
@@ -127,9 +180,11 @@ void DrawFloor(){
 		{-0.5,0,0.5},
 	};
 	glPushMatrix();
+	glTranslatef(0,12.5,-12.5);
+	glRotatef(90,1,0,0);
 	glScaled(25,1,25);
 	glBegin(GL_QUADS);
-	glColor3f(1,0,1);
+	glColor3f(0,0,1);
 	for(int j = 0; j < 4; j++){
 			glVertex3f(square[j][0] , square[j][1]  , square[j][2] );
 			glNormal3f(0,1,0);
@@ -137,11 +192,30 @@ void DrawFloor(){
 			//glTexCoord2f(coords[j][0], coords[j][1]);
 	}
 	glEnd();
-
-
-
 	glPopMatrix();
-	
+
+
+
+}
+
+void DrawLight(){
+	glDisable(GL_LIGHTING);
+	glPushMatrix();
+	glTranslatef(lightPos[0], lightPos[1], lightPos[2]);
+	glColor3f(1,1,0);
+	glutSolidCube(1);
+	glPopMatrix();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_LIGHTING);
+	glPushMatrix();
+	glTranslatef(0, 5, 10);
+	glColor3f(1,0,0);
+	glutSolidCube(1);
+	glPopMatrix();
+	glEnable(GL_LIGHTING);
+
+
+
 }
 
  void DrawSolidPrism(float sz, GLuint &tex){

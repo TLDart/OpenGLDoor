@@ -1,6 +1,7 @@
+#ifndef MAIN
+#define MAIN
 #include "keyboard.h"
-
-
+#include "lighting.h"
 GLint width = 1280, height = 960;
 
 
@@ -128,6 +129,21 @@ float doorLocation[][3] = {
     {leftside + doorSizes[25][0]/2 + doorSizes[14][0],doorSizes[25][1]/2+ doorSizes[23][1]+ doorSizes[24][1],0}, // 25
     {leftside + doorSizes[26][0]/2 + doorSizes[15][0] + doorSizes[19][0] ,doorSizes[26][1]/2 + doorSizes[18][1] + doorSizes[14][1], (float)(0.5) + doorSizes[26][2]/2}, // 26
 };
+//ILunimation
+GLfloat   R = 1;		 	 
+GLfloat  G = 1;		
+GLfloat   B = 1;
+GLfloat intensity = 0.5;
+GLfloat lightPos[4]    = {-12.5, 5.0, 12.5, 1.0 };   
+GLfloat lightAmb[4] = { 0, 0, 0, 0.0 };
+GLfloat lightDif[4] = { (float)R,(float) G,(float) B, 1.0 };
+GLfloat lightSpec[4] = {(float) R,(float) G,(float) B, 1.0 };
 
+GLfloat  chromeAmb []={ 0.25 ,0.25 ,0.25 };
+GLfloat  chromeDif []={   0.4 ,0.4 ,0.4 };
+GLfloat  chromeSpec []={ 0.774597 ,0.774597 ,0.774597 };
+GLint  chromeCoef = 0.6 *128;
 //Screen padding
 void config();
+
+#endif

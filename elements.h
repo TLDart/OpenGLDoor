@@ -12,6 +12,7 @@
 #define GRAY     0.3, 0.3, 0.3, 1.0
 #define PI		 3.14159
 
+extern GLfloat lightPos[4];
 extern int tipoProjeccao, ssize,steps;
 extern GLfloat obsT[], obsP[];
 extern GLuint textures[3];
@@ -28,5 +29,7 @@ void DrawHandler();
 void DrawSolidPrism(float sz, GLuint &tex);
 void DrawSolidCube(float sz, GLuint &tex);
 void DrawFloor();
+void DrawWall();
+void DrawLight();
 
 #endif

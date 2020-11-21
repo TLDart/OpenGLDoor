@@ -1,41 +1,5 @@
 #include "main.h"
-GLint   luzR = 1;		 	 
-GLint   luzG = 1;		
-GLint   luzB = 1;
-GLfloat localPos[4]    = { 1, 2.0, 2.0, 1.0 };   
-GLfloat localCorAmb[4] = { 0, 0, 0, 0.0 };
-GLfloat localCorDif[4] = { luzR, luzG, luzB, 1.0 };
-GLfloat localCorEsp[4] = { luzR, luzG, luzB, 1.0 };
-GLfloat intensidadeDia = 0.8;
-GLfloat luzGlobalCorAmb[4] = { intensidadeDia, intensidadeDia,intensidadeDia, 1.0 };   // 
 
-GLfloat  esmeraldAmb []={ 0.0215 ,0.1745 ,0.0215 };
-GLfloat  esmeraldDif []={   0.07568 ,0.61424 ,0.07568 };
-GLfloat  esmeraldSpec []={ 0.633 ,0.727811 ,0.633 };
-GLint    esmeraldCoef = 0.6 *128;
-
-void ilumina() {
-	glLightfv(GL_LIGHT0, GL_POSITION, localPos);
-	glLightfv(GL_LIGHT0, GL_AMBIENT, localCorAmb);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, localCorDif);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, localCorEsp);
-	glEnable(GL_LIGHT0);
-}
-void initLights(void) {
-	//����������������������������������������������������� Ambiente
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzGlobalCorAmb);
-
-	//����������������������������������������������������� Teto
-	glLightfv(GL_LIGHT0, GL_POSITION, localPos);
-	glLightfv(GL_LIGHT0, GL_AMBIENT, localCorAmb);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, localCorDif);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, localCorEsp);
-
-	glMaterialfv(GL_FRONT, GL_AMBIENT, esmeraldAmb);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, esmeraldDif);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, esmeraldSpec);
-	glMaterialf(GL_FRONT, GL_SHININESS, esmeraldCoef);
-}
 void config(void)
 {
 	glClearColor(BLACK);		// Clear the current screen
@@ -46,6 +10,7 @@ void config(void)
 	
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1);
 	initLights();
 
 	glEnableClientState(GL_VERTEX_ARRAY);
