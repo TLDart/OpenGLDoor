@@ -1,3 +1,6 @@
+#ifndef TEXTUTES
+#define TEXTURES
+
 #include <GL/freeglut.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -9,3 +12,5 @@ extern GLuint textures[3];
 
 
 void loadTextures();
+
+#endif

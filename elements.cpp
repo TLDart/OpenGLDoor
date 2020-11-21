@@ -103,18 +103,29 @@ void DrawDoor(){
  }
  
  void DrawHandler(){
-			glPushMatrix();
-				glColor4f(RED);
-				glTranslatef(doorLocation[26][0] +offset, doorLocation[26][1], doorLocation[26][2]);
-				glTranslatef(0,doorSizes[26][1]/2,0);
-				glRotatef(-rotangle, 1,0,0);
-				glTranslatef(0,-doorSizes[26][1]/2,0);
-				glScalef(doorSizes[26][0],doorSizes[26][1],doorSizes[26][2]);
-				glRotatef(90,1,0,0);
-				DrawSolidCube(1, textures[1]);
-			glPopMatrix();
+	glPushMatrix();
+		glColor4f(RED);
+		glTranslatef(doorLocation[26][0] +offset, doorLocation[26][1], doorLocation[26][2]);
+		glTranslatef(0,doorSizes[26][1]/2,0);
+		glRotatef(-rotangle, 1,0,0);
+		glTranslatef(0,-doorSizes[26][1]/2,0);
+		glScalef(doorSizes[26][0],doorSizes[26][1],doorSizes[26][2]);
+		glRotatef(90,1,0,0);
+		DrawSolidCube(1, textures[1]);
+	glPopMatrix();
 
  }
+
+void DrawFloor(){
+	glPushMatrix();
+
+
+
+
+	
+	glPopMatrix();
+	
+}
 
  void DrawSolidPrism(float sz, GLuint &tex){
 	GLuint  ttf[][3] = {{ 0, 1, 2 },{ 5 ,4, 3 }};

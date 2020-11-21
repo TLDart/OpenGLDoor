@@ -14,6 +14,7 @@ void loadTextures(){
 		ig.GetNumCols(),
 		ig.GetNumRows(), 0, GL_RGB, GL_UNSIGNED_BYTE,
 		ig.ImageData());
+
 	glGenTextures(1, &textures[1]);
 	glBindTexture(GL_TEXTURE_2D, textures[1]);
 	ig.LoadBmpFile("textures/chapa.bmp");
@@ -26,6 +27,7 @@ void loadTextures(){
 		ig.GetNumCols(),
 		ig.GetNumRows(), 0, GL_RGB, GL_UNSIGNED_BYTE,
 		ig.ImageData());
+
 	glGenTextures(1, &textures[2]);
 	glBindTexture(GL_TEXTURE_2D, textures[2]);
 	ig.LoadBmpFile("textures/save.bmp");

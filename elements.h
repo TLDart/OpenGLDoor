@@ -1,3 +1,5 @@
+#ifndef ELEMENTS
+#define ELEMENTS
 #include "textures.h"
 #define BLUE     0.0, 0.0, 1.0, 1.0
 #define RED		 1.0, 0.0, 0.0, 1.0
@@ -25,3 +27,5 @@ void DoorRight();
 void DrawHandler();
 void DrawSolidPrism(float sz, GLuint &tex);
 void DrawSolidCube(float sz, GLuint &tex);
+
+#endif
