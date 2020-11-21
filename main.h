@@ -8,8 +8,8 @@ GLint     msec =     10;
 GLfloat		worldMax = 30.0;	
 
 // Observer Options
-GLfloat  rProjection = 15, aProjection = PI, incProjection = 0.05;
-GLfloat  obsP[] = { rProjection * cos(aProjection), 5, rProjection * sin(aProjection) };
+GLfloat  rProjection = 15, aProjection = 0.5* PI, incProjection = 0.25;
+GLfloat  obsP[] = {0 , 5, 15 };
 GLfloat  obsT[] = { obsP[0] - rProjection * cos(aProjection), obsP[1], obsP[2] - rProjection * sin(aProjection) };
 
 //Textures

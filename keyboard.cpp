@@ -24,15 +24,16 @@ void keyboard(unsigned char key, int x, int y) {
 
 void arrowKeys(int key, int x, int y) {
 		
-		if (key == GLUT_KEY_UP)    obsP[1] = obsP[1] + 0.5;
-		if (key == GLUT_KEY_DOWN)  obsP[1] = obsP[1] - 0.5;
+		if (key == GLUT_KEY_UP)    {obsP[0] = obsP[0] + incProjection * cos(aProjection); obsP[2] = obsP[2] - incProjection * sin(aProjection); }
+		if (key == GLUT_KEY_DOWN)  {obsP[0] = obsP[0] - incProjection * cos(aProjection); obsP[2] = obsP[2] + incProjection * sin(aProjection); }
 		if (key == GLUT_KEY_LEFT)  aProjection += 0.1;
 		if (key == GLUT_KEY_RIGHT) aProjection -= 0.1;
 
 		if (obsP[1] > worldMax)   obsP[1] = worldMax;
 		if (obsP[1] < -worldMax)  obsP[1] = -worldMax;
-		obsP[0] = rProjection * cos(aProjection);
-		obsP[2] = rProjection * sin(aProjection);
+
+		obsT[0] = obsP[0] + rProjection * cos(aProjection);
+		obsT[2] = obsP[2] - rProjection* sin(aProjection);
 		   
 	    glutPostRedisplay();
 
