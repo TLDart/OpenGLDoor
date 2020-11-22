@@ -4,7 +4,7 @@ void keyboard(unsigned char key, int x, int y) {
 	switch(key){
 
 		case 'd':
-		if(ceil(offset *100) /100+ step > 4.52|| ceil(offset *100) /100 +step < 0) {
+		if(ceil(offset *100) /100+ step > 7.52|| ceil(offset *100) /100 +step < 0) {
 				step = -step;
 			}
 			offset =offset + step;

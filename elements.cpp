@@ -75,7 +75,7 @@ void DrawDoor(){
 			if(doorSizes[i][3] == 1){
 			glPushMatrix();
 				//glColor3ub( rand()%255, rand()%255, rand()%255 );
-				glTranslatef(doorLocation[i][0] +offset, doorLocation[i][1], doorLocation[i][2]);
+				glTranslatef(doorLocation[i][0] +std::min(offset, (float)4.5), doorLocation[i][1], doorLocation[i][2]);
 				glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]);
 				glRotatef(90,1,0,0);
 				if(i == 22) DrawSolidCube(1, textures[2]);
@@ -84,7 +84,7 @@ void DrawDoor(){
 			}
 		else{
 			glPushMatrix();
-				glTranslatef(doorLocation[i][0] + offset, doorLocation[i][1], doorLocation[i][2]);
+				glTranslatef(doorLocation[i][0] +std::min(offset, (float)4.5), doorLocation[i][1], doorLocation[i][2]);
 				if(doorSizes[i][3] == 2)
 					glScalef(doorSizes[i][0],doorSizes[i][1],doorSizes[i][2]); 
 				else if(doorSizes[i][3] == 3){
@@ -108,7 +108,7 @@ void DrawDoor(){
  void DrawHandler(){
 	glPushMatrix();
 		glColor4f(RED);
-		glTranslatef(doorLocation[26][0] +offset, doorLocation[26][1], doorLocation[26][2]);
+		glTranslatef(doorLocation[26][0] +std::min(offset,(float)4.5), doorLocation[26][1], doorLocation[26][2]);
 		glTranslatef(0,doorSizes[26][1]/2,0);
 		glRotatef(-rotangle, 1,0,0);
 		glTranslatef(0,-doorSizes[26][1]/2,0);
@@ -130,15 +130,15 @@ void DrawScene(int dg){
 
 	//Base	
 	glPushMatrix();
-		glTranslatef(-0.5,-0.5,0);
-		glScaled(w,1,h);
+		glTranslatef(-2.0,-0.5,0);
+		glScaled(w + 3,1,h);
 		glutSolidCube(1);
 	glPopMatrix();
 
 	//Ceiling
 	glPushMatrix();
-		glTranslatef(-0.5,10,0);
-		glScaled(w,1,h);
+		glTranslatef(-2.0,10,0);
+		glScaled(w + 3,1,h);
 		glutSolidCube(1);
 	glPopMatrix();
 
@@ -151,15 +151,15 @@ void DrawScene(int dg){
 
 	// Wall Left	
 	glPushMatrix();
-    glTranslatef(-w/2 - 1,5,0); // Door Not symetric
+    glTranslatef(-w/2 - 4,5,0); // Door Not symetric
 		glScaled(1,10,h);
 		glutSolidCube(1);
 	glPopMatrix();
 
 	//Behind Door	
 	glPushMatrix();
-		glTranslatef(-9,5,-1);
-		glScaled(7,10,1);
+		glTranslatef(-10.5,5,-1);
+		glScaled(10,10,1);
 		glutSolidCube(1);
 	glPopMatrix();
 
@@ -179,8 +179,8 @@ void DrawScene(int dg){
 	glPopMatrix(); */
 
 	glPushMatrix();
-		glTranslatef(-0.5,0,-(h/2 + 5));
-		DrawMalha(w,10, dg);
+		glTranslatef(-2.0,0,-(h/2 + 5));
+		DrawMalha(w + 3,10, dg);
 	glPopMatrix();
 
 

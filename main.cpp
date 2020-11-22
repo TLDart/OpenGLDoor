@@ -39,7 +39,7 @@ void display(void) {
 	ilumina();
 
 	//Draw Objects
-	drawEixos();
+	//drawEixos();
 	//DrawMalha(10,10,200);
 	DrawDoor();
 	DrawScene(poligonNr);
