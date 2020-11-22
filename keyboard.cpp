@@ -11,6 +11,12 @@ void keyboard(unsigned char key, int x, int y) {
 			
 			//std::cout << offset << step << std::endl;
 			break;
+		case 'p':
+			poligonNr = std::min(poligonNr * 2, 1000);
+			break;
+		case 'o':
+			poligonNr = std::max(poligonNr / 2, 1);
+			break;
 		case 'w':
 		if(rotangle == 70 || rotangle == -1) anglestep = -anglestep;
 			rotangle = rotangle + anglestep;

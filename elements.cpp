@@ -119,7 +119,7 @@ void DrawDoor(){
 
  }
 
-void DrawScene(){
+void DrawScene(int dg){
 	float w =24, h = 30;
 	GLfloat square[][3] ={
 		{-0.5,0,-0.5},
@@ -137,7 +137,7 @@ void DrawScene(){
 
 	//Ceiling
 	glPushMatrix();
-		glTranslatef(0,10,0);
+		glTranslatef(-0.5,10,0);
 		glScaled(w,1,h);
 		glutSolidCube(1);
 	glPopMatrix();
@@ -151,7 +151,7 @@ void DrawScene(){
 
 	// Wall Left	
 	glPushMatrix();
-		glTranslatef(-w/2,5,0);
+    glTranslatef(-w/2 - 1,5,0); // Door Not symetric
 		glScaled(1,10,h);
 		glutSolidCube(1);
 	glPopMatrix();
@@ -171,11 +171,16 @@ void DrawScene(){
 	glPopMatrix();
 
 	//Back Wall
-	glPushMatrix();
+	/* glPushMatrix();
 		glTranslatef(0,5,-(h/2));
 		glRotatef(90,1,0,0);
 		glScaled(w,1,10);
 		glutSolidCube(1);
+	glPopMatrix(); */
+
+	glPushMatrix();
+		glTranslatef(-0.5,0,-(h/2 + 5));
+		DrawMalha(w,10, dg);
 	glPopMatrix();
 
 
@@ -193,11 +198,11 @@ void DrawLight(){
 	glEnable(GL_LIGHTING);
 	glDisable(GL_LIGHTING);
 	glPushMatrix();
-	glTranslatef(0, 5, 10);
+	glTranslatef(Spot_Pos[0], Spot_Pos[1], Spot_Pos[2]);
 	glColor3f(1,0,0);
 	glutSolidCube(1);
 	glPopMatrix();
-	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHTING); 
 }
 
 void DrawTransparent(){
@@ -222,6 +227,34 @@ void DrawTransparent(){
 	glPopMatrix();
 	glBlendFunc (GL_ONE, GL_ZERO);
 	glDisable(GL_BLEND);
+
+
+}
+void DrawMalha(double w,  double h, int degree){
+	double wdim = w/degree;
+	double hdim = h/degree;
+
+
+	glPushMatrix();
+		glTranslatef(0, 0, 8);  
+		glTranslatef((float)-w/2,0, 0);
+		glNormal3f(0, 0, 1);       
+
+		glBegin(GL_QUADS);
+		for (int i = 0; i < degree; i++)
+			for (int j = 0; j < degree; j++) {
+				glVertex3d((double) wdim * j , (double)hdim * i, 0);
+				glVertex3d((double)wdim* (j + 1),(double)hdim * i, 0);
+				glVertex3d((double)wdim * (j + 1) ,(double)hdim * (i + 1), 0);
+				glVertex3d((double)wdim * j,(double) hdim * (i + 1), 0);
+				/* glVertex3f((float) 0, 0, 0);
+				glVertex3f((float)10,(float)0, 0);
+				glVertex3f((float)10 ,(float)10, 0);
+				glVertex3f((float)0,(float)10, 0); */
+			}
+		glEnd();
+	glPopMatrix();
+
 
 
 }

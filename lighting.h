@@ -2,17 +2,9 @@
 #define LIGHTING
 #pragma once
 #include <GL/freeglut.h>
-extern GLfloat   R, G, B;
-extern GLfloat intensity;
-extern GLfloat lightPos[4];
-extern GLfloat lightAmb[4];
-extern GLfloat lightDif[4];
-extern GLfloat lightSpec[4];
-
-extern GLfloat  chromeAmb [];
-extern GLfloat  chromeDif [];
-extern GLfloat  chromeSpec [];
-extern GLint  chromeCoef;
+extern GLfloat   R, G, B, intensity, lightPos[4], lightAmb[4], lightDif[4], lightSpec[4];
+extern GLfloat Spot_Direction[], Spot_Color[], Spot_Att[], Spot_Exp, Spot_opening, Spot_Pos[];
+extern GLfloat  chromeAmb[], chromeDif[], chromeSpec[], chromeCoef;
 
 
 void ilumina();

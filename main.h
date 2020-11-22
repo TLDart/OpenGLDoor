@@ -129,22 +129,35 @@ float doorLocation[][3] = {
     {leftside + doorSizes[25][0]/2 + doorSizes[14][0],doorSizes[25][1]/2+ doorSizes[23][1]+ doorSizes[24][1],0}, // 25
     {leftside + doorSizes[26][0]/2 + doorSizes[15][0] + doorSizes[19][0] ,doorSizes[26][1]/2 + doorSizes[18][1] + doorSizes[14][1], (float)(0.5) + doorSizes[26][2]/2}, // 26
 };
-//ILunimation
-GLfloat   R = 1;		 	 
+//Ilumination
+// Ceil Light
+GLfloat  R = 1;		 	 
 GLfloat  G = 1;		
-GLfloat   B = 1;
+GLfloat  B = 1;
 GLfloat intensity = 0.5;
-GLfloat lightPos[4]    = {-12.5, 5.0, 12.5, 1.0 };   
+GLfloat lightPos[4]    = {-8.5, 5.0, 12.5, 1.0};   
 GLfloat lightAmb[4] = { 0, 0, 0, 0.0 };
 GLfloat lightDif[4] = { (float)R,(float) G,(float) B, 1.0 };
 GLfloat lightSpec[4] = {(float) R,(float) G,(float) B, 1.0 };
 
+//Spot
+GLfloat Spot_Direction[] = { 0, 0, -1, 0 };	
+GLfloat Spot_Color[]     = { 1, 0,  0, 1 };	
+GLfloat Spot_Att[] =  {1.0, 0.05,0};
+GLfloat Spot_Exp = 2.0;	
+GLfloat	Spot_opening = 50.0;		
+GLfloat Spot_Pos[] = {1.0f, 5.0f, -10.0f, 1.0f };   
+
+//Material
 GLfloat  chromeAmb []={ 0.25 ,0.25 ,0.25 };
 GLfloat  chromeAmbTrans []={ 0.25 ,0.25 ,0.25, 0.5 };
 GLfloat  chromeDifTrans []={   0.4 ,0.4 ,0.4, 0.5 };
 GLfloat  chromeDif []={   0.4 ,0.4 ,0.4 };
 GLfloat  chromeSpec []={ 0.774597 ,0.774597 ,0.774597 };
-GLint  chromeCoef = 0.6 *128;
+GLfloat  chromeCoef = 0.6 *128;
+
+// Control Mesh
+int poligonNr = 1;
 //Screen padding
 void config();
 

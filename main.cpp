@@ -16,8 +16,6 @@ void config(void)
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
 	
-	
-	glEnable(GL_TEXTURE_2D);
 	glTexCoordPointer(2, GL_FLOAT, 0, texturas);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	srand(1);
@@ -42,8 +40,9 @@ void display(void) {
 
 	//Draw Objects
 	drawEixos();
+	//DrawMalha(10,10,200);
 	DrawDoor();
-	DrawScene();
+	DrawScene(poligonNr);
 	DrawLight();
 	DrawTransparent();
 

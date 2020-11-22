@@ -14,7 +14,7 @@
 
 extern GLfloat  chromeAmbTrans[], chromeDifTrans[]; 
 
-extern GLfloat lightPos[4];
+extern GLfloat lightPos[4], Spot_Pos[];
 extern int tipoProjeccao, ssize,steps;
 extern GLfloat obsT[], obsP[];
 extern GLuint textures[3];
@@ -30,8 +30,9 @@ void DoorRight();
 void DrawHandler();
 void DrawSolidPrism(float sz, GLuint &tex);
 void DrawSolidCube(float sz, GLuint &tex);
-void DrawScene();
+void DrawScene(int dg);
 void DrawLight();
 void DrawTransparent();
+void DrawMalha(double w,  double h, int degree);
 
 #endif

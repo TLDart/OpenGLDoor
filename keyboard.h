@@ -2,7 +2,7 @@
 #define KEYBOARD
 #include "elements.h"
 
-
+extern int poligonNr;
 extern GLfloat intensity, R, G,B, lightPos[], chromeSpec[];
 extern GLfloat obsT[], obsP[];
 extern GLfloat  rProjection, aProjection, incProjection, worldMax;
