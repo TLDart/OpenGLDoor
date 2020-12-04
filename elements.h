@@ -13,6 +13,7 @@
 #define PI		 3.14159
 
 extern GLfloat  chromeAmbTrans[], chromeDifTrans[]; 
+extern GLfloat  emeraldAmbTrans[], emeraldDifTrans[]; 
 
 extern GLfloat lightPos[4], Spot_Pos[];
 extern int tipoProjeccao, ssize,steps;

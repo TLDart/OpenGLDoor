@@ -156,6 +156,12 @@ GLfloat  chromeDif []={   0.4 ,0.4 ,0.4 };
 GLfloat  chromeSpec []={ 0.774597 ,0.774597 ,0.774597 };
 GLfloat  chromeCoef = 0.6 *128;
 
+GLfloat  emeraldAmb []={ 0.0215 ,0.1745 ,0.0215 };
+GLfloat  emeraldAmbTrans []={   0.07568 ,0.61424 ,0.07568, 0.5 };
+GLfloat  emeraldDifTrans []={   0.07568 ,0.61424 ,0.07568, 0.5};
+GLfloat  emeraldDif []={   0.07568 ,0.61424 ,0.07568};
+GLfloat  emeraldSpec []={ 0.633 ,0.727811 ,0.633 };
+GLfloat    emeraldCoef = 0.6 *128;
 // Control Mesh
 int poligonNr = 1;
 //Screen padding

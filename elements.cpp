@@ -206,8 +206,8 @@ void DrawLight(){
 }
 
 void DrawTransparent(){
-	glMaterialfv(GL_FRONT, GL_AMBIENT, chromeAmbTrans);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, chromeDifTrans);
+	glMaterialfv(GL_FRONT, GL_AMBIENT, emeraldAmbTrans);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, emeraldDifTrans);
 	glEnable(GL_BLEND);
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -228,6 +228,8 @@ void DrawTransparent(){
 	glBlendFunc (GL_ONE, GL_ZERO);
 	glDisable(GL_BLEND);
 
+	glMaterialfv(GL_FRONT, GL_AMBIENT, chromeAmbTrans);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, chromeDifTrans);
 
 }
 void DrawMalha(double w,  double h, int degree){

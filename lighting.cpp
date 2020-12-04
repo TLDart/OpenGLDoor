@@ -29,11 +29,15 @@ void initLights(void) {
 	glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpec);
 	
 
-	glMaterialfv(GL_FRONT, GL_AMBIENT, chromeAmb);
+ 	/* glMaterialfv(GL_FRONT, GL_AMBIENT, chromeAmb);
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, chromeDif);
 	glMaterialfv(GL_FRONT, GL_SPECULAR,chromeSpec);
-	glMaterialf(GL_FRONT, GL_SHININESS,chromeCoef);
-}
+	glMaterialf(GL_FRONT, GL_SHININESS,chromeCoef);  */
+	glMaterialfv(GL_FRONT, GL_AMBIENT, emeraldAmb);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, emeraldDif);
+	glMaterialfv(GL_FRONT, GL_SPECULAR,emeraldSpec);
+	glMaterialf(GL_FRONT, GL_SHININESS,emeraldCoef);
+} 
 
 void updateLights(){
 	lightAmb[0] = R * intensity;
