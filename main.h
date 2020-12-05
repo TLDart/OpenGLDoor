@@ -141,12 +141,12 @@ GLfloat lightDif[4] = { (float)R,(float) G,(float) B, 1.0 };
 GLfloat lightSpec[4] = {(float) R,(float) G,(float) B, 1.0 };
 
 //Spot
-GLfloat Spot_Direction[] = { 0, 0, -1, 0 };	
+GLfloat Spot_Direction[] = { -1, 0, 0, 0 };	
 GLfloat Spot_Color[]     = { 1, 0,  0, 1 };	
 GLfloat Spot_Att[] =  {1.0, 0.05,0};
 GLfloat Spot_Exp = 2.0;	
-GLfloat	Spot_opening = 50.0;		
-GLfloat Spot_Pos[] = {1.0f, 5.0f, -10.0f, 1.0f };   
+GLfloat	Spot_opening = 0.5;		
+GLfloat Spot_Pos[] = {10.0f, 9.0f, 1.0f, 1.0f };   
 
 //Material
 GLfloat  chromeAmb []={ 0.25 ,0.25 ,0.25 };
@@ -157,8 +157,8 @@ GLfloat  chromeSpec []={ 0.774597 ,0.774597 ,0.774597 };
 GLfloat  chromeCoef = 0.6 *128;
 
 GLfloat  emeraldAmb []={ 0.0215 ,0.1745 ,0.0215 };
-GLfloat  emeraldAmbTrans []={   0.07568 ,0.61424 ,0.07568, 0.5 };
-GLfloat  emeraldDifTrans []={   0.07568 ,0.61424 ,0.07568, 0.5};
+GLfloat  emeraldAmbTrans []={   0.04568 ,0.09424 ,0.09568, 0.5 };
+GLfloat  emeraldDifTrans []={   0.00568 ,0.01424 ,0.07568, 0.5};
 GLfloat  emeraldDif []={   0.07568 ,0.61424 ,0.07568};
 GLfloat  emeraldSpec []={ 0.633 ,0.727811 ,0.633 };
 GLfloat    emeraldCoef = 0.6 *128;
@@ -167,4 +167,5 @@ int poligonNr = 1;
 //Screen padding
 void config();
 
+char text[30];
 #endif

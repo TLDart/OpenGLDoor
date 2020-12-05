@@ -11,4 +11,5 @@ extern GLfloat  emeraldAmb[], emeraldDif[], emeraldSpec[], emeraldCoef;
 void ilumina();
 void initLights(void);
 void updateLights();
+void drawLaserRoom();
 #endif 

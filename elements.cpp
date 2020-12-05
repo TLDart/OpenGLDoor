@@ -107,14 +107,13 @@ void DrawDoor(){
  
  void DrawHandler(){
 	glPushMatrix();
-		glColor4f(RED);
 		glTranslatef(doorLocation[26][0] +std::min(offset,(float)4.5), doorLocation[26][1], doorLocation[26][2]);
 		glTranslatef(0,doorSizes[26][1]/2,0);
 		glRotatef(-rotangle, 1,0,0);
 		glTranslatef(0,-doorSizes[26][1]/2,0);
 		glScalef(doorSizes[26][0],doorSizes[26][1],doorSizes[26][2]);
 		glRotatef(90,1,0,0);
-		DrawSolidCube(1, textures[1]);
+		DrawSolidCube(1, textures[0]);
 	glPopMatrix();
 
  }
@@ -132,42 +131,54 @@ void DrawScene(int dg){
 	glPushMatrix();
 		glTranslatef(-2.0,-0.5,0);
 		glScaled(w + 3,1,h);
-		glutSolidCube(1);
+		//glutSolidCube(1);
+		DrawSolidCube(1, textures[1]);
 	glPopMatrix();
 
 	//Ceiling
 	glPushMatrix();
 		glTranslatef(-2.0,10,0);
 		glScaled(w + 3,1,h);
-		glutSolidCube(1);
+		//glutSolidCube(1);
+		DrawSolidCube(1, textures[1]);
 	glPopMatrix();
 
 	// Wall Left	
 	glPushMatrix();
-		glTranslatef(w/2,5,0);
+		/* glTranslatef(w/2,5,0);
 		glScaled(1,10,h);
-		glutSolidCube(1);
+		DrawSolidCube(1, textures[1]); */
+		glTranslatef(w -4.5,0,0); // Door Not symetric
+		glRotatef(-90,0,1,0);
+		DrawMalha(h,10, dg);
+		//glutSolidCube(1);
 	glPopMatrix();
 
 	// Wall Left	
 	glPushMatrix();
-    glTranslatef(-w/2 - 4,5,0); // Door Not symetric
-		glScaled(1,10,h);
-		glutSolidCube(1);
+    	//glTranslatef(-w/2 - 4,5,0); // Door Not symetric
+		//glScaled(1,10,h);
+		//DrawSolidCube(1, textures[1]);
+    	glTranslatef(-w + 1,0,0); // Door Not symetric
+		glRotatef(90,0,1,0);
+		DrawMalha(h,10, dg);
+		//glutSolidCube(1);
 	glPopMatrix();
 
 	//Behind Door	
 	glPushMatrix();
 		glTranslatef(-10.5,5,-1);
 		glScaled(10,10,1);
-		glutSolidCube(1);
+		//glutSolidCube(1);
+		DrawSolidCube(1, textures[1]);
 	glPopMatrix();
 
 	//Behind Door
 	glPushMatrix();
 		glTranslatef(8,5,-1);
 		glScaled(7,10,1);
-		glutSolidCube(1);
+		//glutSolidCube(1);
+		DrawSolidCube(1, textures[1]);
 	glPopMatrix();
 
 	//Back Wall
@@ -196,13 +207,13 @@ void DrawLight(){
 	glPopMatrix();
 
 	glEnable(GL_LIGHTING);
-	glDisable(GL_LIGHTING);
+	/* glDisable(GL_LIGHTING);
 	glPushMatrix();
 	glTranslatef(Spot_Pos[0], Spot_Pos[1], Spot_Pos[2]);
 	glColor3f(1,0,0);
 	glutSolidCube(1);
 	glPopMatrix();
-	glEnable(GL_LIGHTING); 
+	glEnable(GL_LIGHTING);  */
 }
 
 void DrawTransparent(){

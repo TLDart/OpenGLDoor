@@ -1,6 +1,7 @@
 #ifndef ELEMENTS
 #define ELEMENTS
 #include "textures.h"
+#include <cstring>
 #define BLUE     0.0, 0.0, 1.0, 1.0
 #define RED		 1.0, 0.0, 0.0, 1.0
 #define YELLOW	 1.0, 1.0, 0.0, 1.0
@@ -36,4 +37,5 @@ void DrawLight();
 void DrawTransparent();
 void DrawMalha(double w,  double h, int degree);
 
+ void DrawHandlerTest();
 #endif

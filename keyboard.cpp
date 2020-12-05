@@ -62,16 +62,16 @@ void keyboard(unsigned char key, int x, int y) {
 			updateLights();
 			break;
 		case 'b':
-			chromeSpec[0] += 0.1;
-			chromeSpec[1] += 0.1;
-			chromeSpec[2] += 0.1;
+			chromeSpec[0] = std::min(chromeSpec[0] + 0.1, 3.0);
+			chromeSpec[1] = std::min(chromeSpec[1] + 0.1, 3.0);
+			chromeSpec[2] = std::min(chromeSpec[2] + 0.1, 3.0);
 			glMaterialfv(GL_FRONT, GL_SPECULAR,chromeSpec);
 			glutPostRedisplay();
 			break;
 		case 'v':
-			chromeSpec[0] -= 0.1;
-			chromeSpec[1] -= 0.1;
-			chromeSpec[2] -= 0.1;
+			chromeSpec[0] = std::max(chromeSpec[0] - 0.1, 0.0);
+			chromeSpec[1] = std::max(chromeSpec[1] - 0.1, 0.0);
+			chromeSpec[2] = std::max(chromeSpec[2] - 0.1, 0.0);
 			glMaterialfv(GL_FRONT, GL_SPECULAR,chromeSpec);
 			glutPostRedisplay();
 			break;
